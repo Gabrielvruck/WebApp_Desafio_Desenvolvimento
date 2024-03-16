@@ -151,9 +151,12 @@ namespace WebApp_Desafio_BackEnd.DataAccess
 
         public bool GravarChamado(int ID, string Assunto, string Solicitante, int IdDepartamento, DateTime DataAbertura)
         {
-            if (DataAbertura.Date < DateTime.Today)
+            if(ID == 0)
             {
-                return false;
+                if (DataAbertura.Date < DateTime.Today)
+                {
+                    return false;
+                }
             }
 
             int regsAfetados = -1;

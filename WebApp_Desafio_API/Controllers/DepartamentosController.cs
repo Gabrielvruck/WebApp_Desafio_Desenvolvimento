@@ -137,8 +137,8 @@ namespace WebApp_Desafio_API.Controllers
         [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(string), StatusCodes.Status403Forbidden)]
         [ProducesResponseType(typeof(string), StatusCodes.Status500InternalServerError)]
-        [Route("Excluir/{idDepartamento}")]
-        public IActionResult Excluir([FromRoute] int idDepartamento)
+        [Route("Excluir")]
+        public IActionResult Excluir([FromQuery] int idDepartamento)
         {
             try
             {

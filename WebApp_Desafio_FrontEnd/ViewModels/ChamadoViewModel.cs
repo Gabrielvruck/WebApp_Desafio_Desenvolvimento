@@ -16,10 +16,12 @@ namespace WebApp_Desafio_FrontEnd.ViewModels
 
         [Display(Name = "Assunto")]
         [DataMember(Name = "Assunto")]
+        [StringLength(100, ErrorMessage = "O campo Assunto deve ter no máximo 100 caracteres.")]
         public string Assunto { get; set; }
 
         [Display(Name = "Solicitante")]
         [DataMember(Name = "Solicitante")]
+        [StringLength(50, ErrorMessage = "O campo Solicitante deve ter no máximo 50 caracteres.")]
         public string Solicitante { get; set; }
 
         [Display(Name = "IdDepartamento")]

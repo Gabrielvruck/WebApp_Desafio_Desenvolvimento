@@ -23,7 +23,6 @@ $(document).ready(function () {
 
         let departamento = SerielizeForm($('#form'));
         let url = $('#form').attr('action');
-        //debugger;
 
         $.ajax({
             type: "POST",

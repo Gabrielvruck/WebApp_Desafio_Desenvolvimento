@@ -33,7 +33,7 @@
                 <div class="form-group col-lg-5 col-md-4 col-sm-8">
                     <label class="form-label" asp-for="Departamento"></label>
                     <select data-placeholder="Selecionar" class="form-control chosen-select" asp-for="IdDepartamento" readonly="readonly" id="Departamento">
-                        <option value=""></option>
+                        <option value="">Selecione um departamento</option>
                         @foreach (var item in ViewData["ListaDepartamentos"] as List<DepartamentoViewModel>)
                         {
                             if (item.ID == Model.IdDepartamento)

@@ -132,12 +132,12 @@ namespace WebApp_Desafio_API.Controllers
         /// <summary>
         /// Exclui um departamento específico
         /// </summary>
-        [HttpDelete("Excluir/{idDepartamento}")]
+        [HttpDelete]
         [ProducesResponseType(typeof(bool), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(string), StatusCodes.Status403Forbidden)]
         [ProducesResponseType(typeof(string), StatusCodes.Status500InternalServerError)]
-        [Route("Excluir")]
+        [Route("Excluir/{idDepartamento}")]
         public IActionResult Excluir([FromRoute] int idDepartamento)
         {
             try

@@ -11,6 +11,7 @@ namespace WebApp_Desafio_FrontEnd.ApiClients.Desafio_API
 
         private const string chamadosListUrl = "api/Chamados/Listar";
         private const string chamadosObterUrl = "api/Chamados/Obter";
+        private const string chamadosObterSolicitanteUrl = "api/Chamados/Obter/solicitante";
         private const string chamadosGravarUrl = "api/Chamados/Gravar";
         private const string chamadosExcluirUrl = "api/Chamados/Excluir";
 
@@ -49,6 +50,27 @@ namespace WebApp_Desafio_FrontEnd.ApiClients.Desafio_API
             var querys = new Dictionary<string, object>()
             {
                 { "idChamado", idChamado }
+            };
+
+            var response = base.Get($"{desafioApiUrl}{chamadosObterUrl}", querys, headers);
+
+            base.EnsureSuccessStatusCode(response);
+
+            string json = base.ReadHttpWebResponseMessage(response);
+
+            return JsonConvert.DeserializeObject<ChamadoViewModel>(json);
+        }
+
+        public ChamadoViewModel ChamadoObterSolicitante(string palavraChave)
+        {
+            var headers = new Dictionary<string, object>()
+            {
+                { "TokenAutenticacao", tokenAutenticacao }
+            };
+
+            var querys = new Dictionary<string, object>()
+            {
+                { "palavraChave", palavraChave }
             };
 
             var response = base.Get($"{desafioApiUrl}{chamadosObterUrl}", querys, headers);

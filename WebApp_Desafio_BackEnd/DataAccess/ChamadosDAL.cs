@@ -121,8 +121,41 @@ namespace WebApp_Desafio_BackEnd.DataAccess
             return chamado;
         }
 
+        public string ObterSolicitantePorPalavraChave(string palavraChave)
+        {
+            string solicitante = "";
+
+            using (SQLiteConnection dbConnection = new SQLiteConnection(CONNECTION_STRING))
+            {
+                using (SQLiteCommand dbCommand = dbConnection.CreateCommand())
+                {
+                    dbCommand.CommandText =
+                        "SELECT Solicitante " +
+                        "FROM chamados " +
+                        $"WHERE Solicitante LIKE '%{palavraChave}%'";
+
+                    dbConnection.Open();
+
+                    object result = dbCommand.ExecuteScalar();
+                    if (result != null)
+                    {
+                        solicitante = result.ToString();
+                    }
+
+                    dbConnection.Close();
+                }
+            }
+
+            return solicitante;
+        }
+
         public bool GravarChamado(int ID, string Assunto, string Solicitante, int IdDepartamento, DateTime DataAbertura)
         {
+            if (DataAbertura.Date < DateTime.Today)
+            {
+                return false;
+            }
+
             int regsAfetados = -1;
 
             using (SQLiteConnection dbConnection = new SQLiteConnection(CONNECTION_STRING))

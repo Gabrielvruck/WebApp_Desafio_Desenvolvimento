@@ -104,6 +104,38 @@ namespace WebApp_Desafio_API.Controllers
         }
 
         /// <summary>
+        /// Obtém dados de um chamado específico usando propriedade solicitante
+        /// </summary>
+        /// <param name="palavraChave">Palavra Chaves para ser buscada no chamado na propriedade solicitante</param>
+        /// <returns></returns>
+        [HttpGet]
+        [ProducesResponseType(typeof(ChamadoResponse), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(string), StatusCodes.Status403Forbidden)]
+        [ProducesResponseType(typeof(string), StatusCodes.Status500InternalServerError)]
+        [Route("Obter/solicitante")]
+        public IActionResult ObterSolicitante([FromQuery] string palavraChave)
+        {
+            try
+            {
+                var _chamadoSolicitante = this.bll.ObterSolicitantePorPalavraChave(palavraChave);
+                return Ok(_chamadoSolicitante);
+            }
+            catch (ArgumentException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (ApplicationException ex)
+            {
+                return StatusCode(422, ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
+
+        /// <summary>
         /// Grava os dados de um chamado
         /// </summary>
         [HttpPost]

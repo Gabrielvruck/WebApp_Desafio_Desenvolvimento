@@ -28,5 +28,10 @@ namespace WebApp_Desafio_BackEnd.Business
         {
             return dal.ExcluirChamado(idChamado);
         }
+
+        public string ObterSolicitantePorPalavraChave(string palavraChave)
+        {
+            return dal.ObterSolicitantePorPalavraChave(palavraChave);
+        }
     }
 }

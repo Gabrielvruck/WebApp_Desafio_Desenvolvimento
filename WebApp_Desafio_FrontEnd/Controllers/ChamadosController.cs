@@ -120,6 +120,22 @@ namespace WebApp_Desafio_FrontEnd.Controllers
             }
         }
 
+        [HttpGet]
+        public IActionResult ObterSolicitante([FromRoute] string palavraChave)
+        {
+            try
+            {
+                var chamadosApiClient = new ChamadosApiClient();
+                var chamadoVM = chamadosApiClient.ChamadoObterSolicitante(palavraChave);
+
+                return Ok(chamadoVM);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new ResponseViewModel(ex));
+            }
+        }
+
         [HttpDelete]
         public IActionResult Excluir([FromRoute] int id)
         {

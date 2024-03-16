@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.IO;
+using System.Linq;
 using WebApp_Desafio_FrontEnd.ApiClients.Desafio_API;
 using WebApp_Desafio_FrontEnd.ViewModels;
 using WebApp_Desafio_FrontEnd.ViewModels.Enums;
@@ -67,6 +68,14 @@ namespace WebApp_Desafio_FrontEnd.Controllers
         {
             try
             {
+                if (!ModelState.IsValid)
+                {
+                    string messages = string.Join("; ", ModelState.Values
+                                        .SelectMany(x => x.Errors)
+                                        .Select(x => x.ErrorMessage));
+                    throw new ApplicationException(messages);
+                }
+
                 var departamentosApiClient = new DepartamentosApiClient();
                 var realizadoComSucesso = departamentosApiClient.DepartamentoGravar(departamentoVM);
 

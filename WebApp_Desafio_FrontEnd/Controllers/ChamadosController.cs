@@ -91,18 +91,18 @@ namespace WebApp_Desafio_FrontEnd.Controllers
                                 this.RouteData.Values["controller"].ToString(),
                                 nameof(this.Listar)));
                 else
-                    throw new ApplicationException($"Falha ao excluir o Chamado.");
+                    throw new ApplicationException($"Falha ao gravar o Chamado.");
             }
             catch (Exception ex)
             {
-                return BadRequest(new ResponseViewModel(ex));
+                return BadRequest(new ResponseViewModel(ex.Message, AlertTypes.error, this.RouteData.Values["controller"].ToString()));
             }
         }
 
         [HttpGet]
         public IActionResult Editar([FromRoute] int id)
         {
-            ViewData["Title"] = "Cadastrar Novo Chamado";
+            ViewData["Title"] = "Editar Chamado";
 
             try
             {

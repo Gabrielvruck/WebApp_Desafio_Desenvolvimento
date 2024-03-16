@@ -77,7 +77,7 @@ namespace WebApp_Desafio_FrontEnd.Controllers
                                 this.RouteData.Values["controller"].ToString(),
                                 nameof(this.Listar)));
                 else
-                    throw new ApplicationException($"Falha ao excluir o Departamento.");
+                    throw new ApplicationException($"Falha ao gravar o Departamento.");
             }
             catch (Exception ex)
             {
@@ -88,7 +88,7 @@ namespace WebApp_Desafio_FrontEnd.Controllers
         [HttpGet]
         public IActionResult Editar([FromRoute] int id)
         {
-            ViewData["Title"] = "Cadastrar Novo Departamento";
+            ViewData["Title"] = "Editar Departamento";
 
             try
             {

@@ -2,14 +2,14 @@ $(document).ready(function () {
   
     $('#btnCancelar').click(function () {
         Swal.fire({
-            html: "Deseja cancelar essa operaÁ„o? O registro n„o ser· salvo.",
+            html: "Deseja cancelar essa opera√ß√£o? O registro n√£o ser√° salvo.",
             type: "warning",
             showCancelButton: true,
         }).then(function (result) {
             if (result.value) {
                 history.back();
             } else {
-                console.log("Cancelou a inclus„o.");
+                console.log("Cancelou a inclus√£o.");
             }
         });
     });

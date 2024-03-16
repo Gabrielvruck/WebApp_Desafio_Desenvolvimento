@@ -40,7 +40,6 @@
             url: url,
             data: chamado,
             success: function (result) {
-
                 Swal.fire({
                     type: result.Type,
                     title: result.Title,
@@ -48,12 +47,10 @@
                 }).then(function () {
                     window.location.href = config.contextPath + result.Controller + '/' + result.Action;
                 });
-
             },
             error: function (result) {
-
                 Swal.fire({
-                    text: result,
+                    text: result.responseJSON.Message,
                     confirmButtonText: 'OK',
                     icon: 'error'
                 });
